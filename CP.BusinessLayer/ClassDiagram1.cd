@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Классы описывающие интерфесы">
+    <Position X="5.167" Y="0.717" Height="0.291" Width="2.422" />
+  </Comment>
+  <Comment CommentText="Классы описывающие сервисы">
+    <Position X="5.158" Y="3.433" Height="0.291" Width="2.334" />
+  </Comment>
+  <Comment CommentText="Классы описывающие модели представления">
+    <Position X="4.916" Y="6.221" Height="0.291" Width="3.126" />
+  </Comment>
+  <Class Name="CP.BusinessLayer.Services.AppointmentService" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAABAAAAAAAAAAAAAAEAAAgAQQAAAAAA=</HashCode>
+      <FileName>Services\AppointmentService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.AuthorizationService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAAEAABAAAAAAAAAAAAAAAAAAgAAAAAACgA=</HashCode>
+      <FileName>Services\AuthorizationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.DentalMaterialService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAABAAAAAAAAAAAAQAAAAAgAEBAAAAAA=</HashCode>
+      <FileName>Services\DentalMaterialService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.DoctorService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAABAAAAABAABAAAAAAAAAgAABAAAAAA=</HashCode>
+      <FileName>Services\DoctorService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.MaterialConsumptionService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAEAABAAAAAAAAAAAAAAAAAAgCAIAAAAAA=</HashCode>
+      <FileName>Services\MaterialConsumptionService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.NormConsumptionRateService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAgAAAAEAABAAAAAAAAAAAAAAAAAAgAAAACAAAA=</HashCode>
+      <FileName>Services\NormConsumptionRateService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.PatientService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAECABAAAAAAAAAAACAAAAAAgAIAAAAAAA=</HashCode>
+      <FileName>Services\PatientService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.PriceListService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAEAABAAAAAAAEAAAAAAAAAAkAAAAAAAAA=</HashCode>
+      <FileName>Services\PriceListService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.TreatmentService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEQABAAAAAAAAAAAABAAAAAgAEAAAAAAA=</HashCode>
+      <FileName>Services\TreatmentService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Services.VisitService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAARAAAAAAAAAAABAAQAAAgAAAAAAAAA=</HashCode>
+      <FileName>Services\VisitService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.AppointmentViewModel">
+    <Position X="1.25" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAACQAQBAAAAAAAACQA=</HashCode>
+      <FileName>Models\AppointmentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.AuthorizationViewModel" Collapsed="true">
+    <Position X="3.75" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAQAAAAAAAAAAEAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AuthorizationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.DentalMaterialViewModel" Collapsed="true">
+    <Position X="3.75" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAACAAAAAAAAAEAIIAAAAAAAAAAQAAEAAAEAAEAAAg=</HashCode>
+      <FileName>Models\DentalMaterialViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.DoctorViewModel" Collapsed="true">
+    <Position X="6.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAABAAAAAAQAACQAAAAAAAAAACCAA=</HashCode>
+      <FileName>Models\DoctorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.MaterialConsumptionViewModel" Collapsed="true">
+    <Position X="6" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAAAAAAAAAAAAAAABAAABEAAAAAAAAAAAAAAIAgAA=</HashCode>
+      <FileName>Models\MaterialConsumptionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.NormConsumptionRateViewModel" Collapsed="true">
+    <Position X="3.75" Y="7.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAABABAAAQAAAAAAAIAAAAAAAAQAIAABAAAQAAEAA=</HashCode>
+      <FileName>Models\NormConsumptionRateViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.PatientViewModel" Collapsed="true">
+    <Position X="8.75" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAABAQAAAAAAAQAQAAQAAACAIAIAAAAAAA=</HashCode>
+      <FileName>Models\PatientViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.PriceListViewModel" Collapsed="true">
+    <Position X="8.75" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAQAAQAAAAAAAAAAAAAAAAAIAAAAAAgAABAA=</HashCode>
+      <FileName>Models\PriceListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.TreatmentViewModel" Collapsed="true">
+    <Position X="8.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAABAAQAAAAAQAAAAAAAAAAAAAAAIAAAAAgAAAAAg=</HashCode>
+      <FileName>Models\TreatmentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.BusinessLayer.Models.VisitViewModel" Collapsed="true">
+    <Position X="6.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACACQAASQAAABEBAAAAAAAAAAACAAQAAAAAAgAACAA=</HashCode>
+      <FileName>Models\VisitViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CP.BusinessLayer.Interfaces.IAppointmentService">
+    <Position X="1.25" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAEAAAgAQQAAAAAA=</HashCode>
+      <FileName>Interfaces\IAppointmentService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.IAuthorizationService" Collapsed="true">
+    <Position X="3.75" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAAAAABAAAAAAAAAAAAAAAAAAgAAAAAACgA=</HashCode>
+      <FileName>Interfaces\IAuthorizationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.IDentalMaterialService" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAQAAAAAgAEBAAAAAA=</HashCode>
+      <FileName>Interfaces\IDentalMaterialService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.IDoctorService" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAABAABAAAAAAAAAgAABAAAAAA=</HashCode>
+      <FileName>Interfaces\IDoctorService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.IMaterialConsumptionService" Collapsed="true">
+    <Position X="6.25" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgCAIAAAAAA=</HashCode>
+      <FileName>Interfaces\IMaterialConsumptionService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.INormConsumptionRateService" Collapsed="true">
+    <Position X="3.75" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAgAAAAAAABAAAAAAAAAAAAAAAAAAgAAAACAAAA=</HashCode>
+      <FileName>Interfaces\INormConsumptionRateService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.IPatientService" Collapsed="true">
+    <Position X="8.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACABAAAAAAAAAAACAAAAAAgAIAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPatientService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.IPriceListService" Collapsed="true">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAABAAAAAAAEAAAAAAAAAAkAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPriceListService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.ITreatmentService" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQABAAAAAAAAAAAABAAAAAgAEAAAAAAA=</HashCode>
+      <FileName>Interfaces\ITreatmentService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.BusinessLayer.Interfaces.IVisitService" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAARAAAAAAAAAAABAAQAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IVisitService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

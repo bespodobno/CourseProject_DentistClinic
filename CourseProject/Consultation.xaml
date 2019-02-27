@@ -1,0 +1,141 @@
+﻿<Window x:Class="CourseProject.Consultation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:CourseProject"
+        mc:Ignorable="d"
+        Title="Consultation" Height="650" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+
+    <Grid>
+        <Grid.Background >
+            <LinearGradientBrush >
+                <GradientStop Color="Lavender" Offset="1" />
+                <GradientStop Color="White" Offset="0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+          
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="4" Grid.RowSpan="4" Margin="10" 
+ x:Name="dGridConsultation"                          
+ ItemsSource="{Binding}"
+ AutoGenerateColumns="False"
+ LoadingRow="dGrid_LoadingRow"
+ RowHeaderWidth="40"
+CanUserDeleteRows="False" CanUserAddRows="False" >
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Код"                    
+                  Binding="{Binding Path=PriceList.ServiceCode}" Width="60" IsReadOnly="True" />
+
+                <DataGridTextColumn Header="Наименование услуги"                                   
+                    Binding="{Binding PriceList.ServiceName,Mode=TwoWay}" Width="400" IsReadOnly="True" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Количество"
+                    Binding="{Binding Quantity}" Width="80" IsReadOnly="True"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Grid.Column="1" Grid.Row="0" Margin="82.6,7,17.4,22.4" Grid.RowSpan="2" TextAlignment="Center" Text="Дата приема"/>
+        <DatePicker Name="dpVisitDate" SelectedDate="{Binding VisitDate,TargetNullValue={x:Static System:DateTime.Now}}"   Grid.Column="2" Grid.Row="0" Margin="19.6,0,18.4,4.2" Height="22" VerticalAlignment="Bottom"/>
+
+        <TextBox x:Name="tbNumberConsultancy" Text="{Binding Path=VisitNumber }" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" />
+        <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center" Text="Прием" HorizontalAlignment="Left" Margin="50,3,0,0.2" Width="37"/>
+        <TextBlock TextAlignment="Center" Text="Пациент" Grid.ColumnSpan="2" Margin="150,31,0.4,0.4" Grid.RowSpan="2"/>
+
+        <TextBlock Grid.Row="1" TextAlignment="Center" Text="Врач" Grid.ColumnSpan="2" Margin="150,30.8,0.4,30.8" Grid.RowSpan="3"/>
+        <TextBlock Grid.Row="3" TextAlignment="Center" Text="Диагноз" Grid.ColumnSpan="2" Margin="150,0.4,0.4,31" Grid.RowSpan="2"/>
+        <TextBlock Grid.Row="4"  TextAlignment="Left" Text="Оказанные услуги:" Grid.Column="1" Grid.ColumnSpan="2" Margin="9.6,5.2,3.4,0"/>
+        <ComboBox Name="cbPatientName" 
+                  Text="{Binding Path=Patient.Name}"
+                   DisplayMemberPath="Name"                  
+                   SelectedValuePath="PatientId" 
+                  ItemsSource="{Binding Patient.Name}"  Grid.Column="2" Grid.Row="1" Margin="9.6,4.8,9.6,5.4" Grid.ColumnSpan="2"
+              ></ComboBox>
+        <ComboBox Name="cbDoctor"  
+                  Text="{Binding Path=Doctor.DoctorName}"
+                  DisplayMemberPath="DoctorName" 
+                  ItemsSource="{Binding Doctor.DoctorName}"
+                  SelectedValuePath="DoctorId"
+                  Grid.Column="2" Grid.Row="2" Margin="9.6,4.6" Grid.ColumnSpan="2"></ComboBox>
+        <TextBlock Grid.Row="10" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Добавить лечение:" Height="16" Margin="23,12,22.4,12.8" Width="105"/>
+        <TextBlock Grid.Row="10"  Grid.Column="3" VerticalAlignment="Center" Text="Количество:" Height="16" Margin="1.4,12,48.6,12.8">
+            
+        </TextBlock>
+        <!--<TextBlock Grid.Row="9"  Grid.Column="2" TextAlignment="Right">Итого:</TextBlock>
+        <TextBlock Grid.Row="9"  Grid.Column="3" TextAlignment="Right" Margin="0,0,20,0" x:Name="tbCost">0</TextBlock>-->
+        <TextBlock Grid.Row="11" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Добавить материал:" Height="16" Margin="20,12.2,20.4,12.6" Width="110"/>
+        <ComboBox Name="cbPricelist"  
+                  
+                  ItemsSource="{Binding }"
+                  SelectedValuePath="PriceListId"
+                  Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2" Margin="9.6,5,12.6,4.8" IsReadOnly="True" 
+                  SelectionChanged="cbPriceList_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock 
+                 Text="{Binding Path=ServiceName}"                    
+                 TextWrapping="Wrap" Width="430"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Name="cbMateriallist"                   
+                  ItemsSource="{Binding }" 
+                  SelectedValuePath="DentalMaterialId"
+                  Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" Margin="9.6,5.2,12.6,4.6" IsReadOnly="True" IsEnabled="False" 
+                    >
+           
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock 
+                 Text="{Binding Path=MaterialName}"                    
+                 TextWrapping="Wrap" Width="430"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="tbDiagnose" Text="{Binding Path=Diagnose}" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="9.6,5.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="325" Grid.Row="3"/>
+
+        <TextBox x:Name="tbQuantity" MaxLength="2" Text="1" Grid.Column="3" TextAlignment="Right" HorizontalAlignment="Left" Height="23" Margin="75.4,0,0,8.8" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="30" Grid.Row="10"/>
+
+        <Button  Name="btCancel" Content="Cancel" Grid.Column="3" Grid.Row="13" Width="50" Margin="0,8.2,31.6,12.8" 
+                 HorizontalAlignment="Right"  BorderThickness="2" IsCancel="True" Click="btCancel_Click"/>
+
+        <Button  Name="btOk"     Content="OK"     Grid.Column="2" Grid.Row="13" Width="50" Margin="127.6,9.6,0,11.2"
+                 HorizontalAlignment="Left" BorderThickness="2" Click="btOk_Click" />
+
+        <Button  Name="btAddLine"     Content="Добавить строку" Grid.Row="12" Width="110" Margin="94.6,10.2,0,8.8"
+                 HorizontalAlignment="Left" BorderThickness="2" Click="btAddLine_Click" Grid.Column="2" />
+
+        <Button  Name="btDeleteLine"     Content="Удалить строку"     Grid.Row="12" Width="104" Margin="0.4,10.2,0,8.8"
+                 HorizontalAlignment="Left" BorderThickness="2" Click="btDeleteLine_Click" Grid.Column="3" />
+    </Grid>
+</Window>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Классы описывающие контекст данных">
+    <Position X="1.883" Y="0.5" Height="0.467" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Классы описывающие интерфейсы ">
+    <Position X="6.492" Y="0.542" Height="0.492" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Классы описывающие репозитории">
+    <Position X="4.758" Y="4.742" Height="0.483" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Классы описывающие сущности">
+    <Position X="4.868" Y="8.506" Height="0.458" Width="1.7" />
+  </Comment>
+  <Class Name="CP.DataLayer.EFContext.CourseProjectContext">
+    <Position X="1.75" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAQAQAAAAAAABAQAAAAAAABgAAAgCAAAg=</HashCode>
+      <FileName>EFContext\CourseProjectContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.EFContext.CourseProjectInitializer">
+    <Position X="4" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EFContext\CourseProjectInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.AppointmentsRepository" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\AppointmentsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.AuthorizationRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\AuthorizationRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.DentalMaterialsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\DentalMaterialsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.DoctorsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\DoctorsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.EntityUnitOfWork" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DEICAICAACBAQEQQAAAAAAFAQAAAAAAABgAAAgCACgg=</HashCode>
+      <FileName>Repositories\EntityUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.MaterialConsumptionsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\MaterialConsumptionsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.NormConsumptionRatesRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\NormConsumptionRatesRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.PatientsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\PatientsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.PriceListsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\PriceListsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.TreatmentsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\TreatmentsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Repositories.VisitsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\VisitsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CP.DataLayer.Entites.Appointment" Collapsed="true">
+    <Position X="1.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAACQAQBAAAAAAAACQA=</HashCode>
+      <FileName>Entites\Appointment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.Authorization" Collapsed="true">
+    <Position X="4.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAQAAAAAAAAAAEAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Entites\Authorization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.DentalMaterial" Collapsed="true">
+    <Position X="6.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAIIAAAAAAAAAAQAAEAAAEAAEAAAg=</HashCode>
+      <FileName>Entites\DentalMaterial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.Doctor" Collapsed="true">
+    <Position X="8.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAABAAAAAAQAACQAAAAAAAAAACCAA=</HashCode>
+      <FileName>Entites\Doctor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.MaterialConsumption" Collapsed="true">
+    <Position X="1.75" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AEIAAAAAAAAAAAAAAABAAABEAAAAAAAAAAAAAAIAgAA=</HashCode>
+      <FileName>Entites\MaterialConsumption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.NormConsumptionRate" Collapsed="true">
+    <Position X="1.75" Y="11.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAABABAAAQAAAAAAAAAAAAAAAAQAIAABAAAQAAEAA=</HashCode>
+      <FileName>Entites\NormConsumptionRate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.Patient" Collapsed="true">
+    <Position X="5.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAABAQAAAAAAAQAQAAQAAACAIAIAAAAAAA=</HashCode>
+      <FileName>Entites\Patient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.PriceList" Collapsed="true">
+    <Position X="8.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAQAAQAAAAAAAAAAAAAAAAAIAAAAAAgAABAA=</HashCode>
+      <FileName>Entites\PriceList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.Treatment" Collapsed="true">
+    <Position X="5.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAABAAQAAAAAQAAAAAAAAAAAAAAAIAAAAAgAAAAAg=</HashCode>
+      <FileName>Entites\Treatment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CP.DataLayer.Entites.Visit" Collapsed="true">
+    <Position X="8.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAQAASQAAABEBAAAAAAAAAAACAAQAAAAAAgAACAA=</HashCode>
+      <FileName>Entites\Visit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CP.DataLayer.Interfaces.IRepository&lt;T&gt;">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CP.DataLayer.Interfaces.IUnitOfWork">
+    <Position X="8.25" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAQAQAAAAAAABAQAAAAAAABgAAAgCAAAg=</HashCode>
+      <FileName>Interfaces\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

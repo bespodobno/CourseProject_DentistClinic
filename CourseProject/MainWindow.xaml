@@ -1,0 +1,631 @@
+﻿<Window x:Class="CourseProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseProject"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        mc:Ignorable="d"                         
+        Title="Стоматологический кабинет" Height="550" Width="1100" MaxWidth="1500" MaxHeight="750" MinWidth="1100" MinHeight="550" Loaded="DataWindow_Loaded" Closing="Window_Closing">
+    <Window.Resources>
+        <Style x:Key="HeightColor">
+            <Setter Property="Control.Background" Value="AliceBlue"  />
+            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Height" Value="30" />
+        </Style>
+        <!-- AliceBlue Button Style -->
+        <Style x:Key="AliceBlueButtonStyle" >
+            <Setter Property="Button.Width" Value="130"/>
+            <Setter Property="Button.Height" Value="25"/>
+            <Setter Property="Button.FontFamily" Value="Verdana"/>
+            <Setter Property="Button.FontSize" Value="10"/>
+            <Setter Property="Button.FontWeight" Value="Normal"/>
+            <Setter Property="Button.Foreground" Value="Black"/>
+            <Setter Property="Button.Background" Value="AliceBlue"/>
+            <Setter Property="Button.BorderBrush" Value="Black"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background >
+            <LinearGradientBrush >
+                <GradientStop Color="Lavender" Offset="1" />
+                <GradientStop Color="White" Offset="0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TabControl TabStripPlacement="Left" Margin="4,4,6.4,6.8" x:Name="TabControl">
+          
+            <TabItem Header="Пациенты"  Style="{StaticResource HeightColor}" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                        <RowDefinition/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ToolBarTray  Grid.Row="0"  Grid.ColumnSpan="3"  Height="40" VerticalAlignment="Top">
+                        <ToolBar  VerticalAlignment="Top">
+                            <ToggleButton Name="btAddPatient" Click="btnAddPatient_Click" ToolTip="Добавление пациента">
+                                <Image Source="/icons/add.png" />
+                            </ToggleButton>
+                            <Separator />
+                            <Button Name="btEditPatient" Click="btnEditPatient_Click" ToolTip="Изменение пациента">
+                                <Image Source="/icons/edit.png" />
+                            </Button >
+                            <Separator />
+                            <Button Name="btDeletePatient" Click="btnDeletePatient_Click" ToolTip="Удаление пациента">
+                                <Image Source="/icons/delete.png" />
+                            </Button>
+                            <Separator />
+                            <TextBox Name="tbSearchField" Foreground="LightGray" Width="150" >Поиск...</TextBox>
+                            <Separator />
+                            <Button Name="btSearchPatient" Click="btnSearchPatient_Click" ToolTip="Поиск по имени пациента">
+                                <Image Source="/icons/ok.png" />
+                            </Button>
+                            <Separator />
+                            <Button Name="btnResetPatientFilter" Click="btnResetPatientFilter_Click" ToolTip="Сброс фильтра">
+                                <Image Height="30" Source="/icons/filter.png"></Image>
+                            </Button>
+                            <Separator />
+
+                        </ToolBar>
+                    </ToolBarTray>
+                    <DataGrid Grid.Row="1" x:Name="dGridPatients"
+                            ItemsSource="{Binding}"
+ AutoGenerateColumns="False"
+ LoadingRow="dGrid_LoadingRow"
+ RowHeaderWidth="40" IsReadOnly="True" CanUserAddRows="False" SelectionMode="Extended" BorderBrush="{x:Null}"        >
+
+
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header="Ф.И.О." Width="180"
+                    Binding="{Binding Name}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Пол" Width="60"
+                    Binding="{Binding Sex}"/>
+                            <DataGridTextColumn Header="Дата Рождения" Width="100"
+                    Binding="{Binding DateOfBirth,StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                            <DataGridTextColumn Header="Адрес" Width="200"
+                    Binding="{Binding Address}"/>
+                            <DataGridTextColumn Header="Телефон" Width="100"
+                    Binding="{Binding Telephone}"/>
+                            <DataGridTextColumn Header="Договор" Width="150"
+                    Binding="{Binding Contract}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Запись"  Style="{StaticResource HeightColor}"  VerticalAlignment="Bottom" >
+                <Grid>
+                    <Grid.Background >
+                        <LinearGradientBrush >
+                            <GradientStop Color="Lavender" Offset="1" />
+                            <GradientStop Color="White" Offset="0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="168"></RowDefinition>
+                        <RowDefinition Height="168*"></RowDefinition>
+                        <RowDefinition Height="167*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel>
+                        <TextBlock>Выберите период:</TextBlock>
+                        <TextBlock >С:</TextBlock>
+                        <DatePicker Name="DatePickerFrom" Text="{Binding Path=SelectedDate, StringFormat='dd-MM-yyyy'}"></DatePicker>
+                        <TextBlock>По:</TextBlock>
+                        <DatePicker Name="DatePickerTo" Text="{Binding Path=SelectedDate, StringFormat='dd-MM-yyyy'}" ></DatePicker>
+                        <TextBlock Text="Период:" TextAlignment="Center" Width="72"></TextBlock>
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBlock Margin="20,0,0,0">C</TextBlock>
+                            <TextBlock Text="{Binding ElementName=DatePickerFrom,Path=SelectedDate,StringFormat='dd-MM-yyyy'}" Margin="20,0,0,0" Width="70"></TextBlock>
+                            <TextBlock Margin="20,0,0,0">по</TextBlock>
+                            <TextBlock Margin="20,0,0,0" Text="{Binding ElementName=DatePickerTo,Path=SelectedDate,StringFormat='dd-MM-yyyy'}"  Width="70"></TextBlock>
+                        </WrapPanel>
+                        <Button Margin="5" x:Name="btAddPeriod"   Click="AddPeriod_Click"   Style="{StaticResource AliceBlueButtonStyle}" Height="29">Установить</Button>
+                    </StackPanel>
+
+
+                    <TextBlock Text="Выберите врача:" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1" Margin="72,0,85.4,60"></TextBlock>
+                    <TextBlock Text="" Grid.Row="1" TextAlignment="Center" Margin="4,44,288.6,108" Grid.ColumnSpan="2"/>
+
+
+                    <ComboBox Grid.Row="1" Grid.Column="0" Margin="0,120,4.8,18" x:Name="cBoxDoctor" Height="30"
+                      DisplayMemberPath="DoctorName"
+                      ItemsSource="{Binding }"
+                      SelectedValuePath="DoctorId" 
+                    SelectionChanged="cBoxDoctor_Selected"
+                                  ></ComboBox>
+
+                    <StackPanel  Orientation="Vertical" Grid.Row="2" >
+                        <Button Content="Сбросить все фильтры"  Margin="5"  x:Name="btResetFilterApp"   Click="ResetFilterAppoinment_Click" Style="{StaticResource AliceBlueButtonStyle}" Height="30"></Button>
+                        <Button Content="Добавить запись"       Margin="5"  x:Name="btAddAppointment"   Click="AddAppoinment_Click"   Style="{StaticResource AliceBlueButtonStyle}" Height="31"/>
+                        <Button Content="Редактировать запись"  Margin="5"  x:Name="bEditAppointment"   Click="EditAppoinment_Click"   Style="{StaticResource AliceBlueButtonStyle}" Height="30"/>
+                        <Button Content="Удалить запись"        Margin="5"  x:Name="bDeleteAppointment" Click="DeleteAppoinment_Click" Style="{StaticResource AliceBlueButtonStyle}" Height="31"/>
+
+
+                    </StackPanel>
+
+
+                    <DataGrid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3"  x:Name="dGridAppointment"                          
+ ItemsSource="{Binding }"
+ AutoGenerateColumns="False"
+ LoadingRow="dGrid_LoadingRow"
+ RowHeaderWidth="40" IsReadOnly="True" CanUserAddRows="False">
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header="Дата"
+                    Binding="{Binding Date,StringFormat='{}{0:dd/MM/yyyy}'}" Width="100"/>
+                            <DataGridTextColumn Header="Время"
+                    Binding="{Binding Time,
+                             StringFormat={}{0:hh}:{0:mm}}" Width="50">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Пациент"
+                    Binding="{Binding Patient.Name}" Width="150"/>
+                            <DataGridTextColumn Header="Телефон"
+                    Binding="{Binding Patient.Telephone}" Width="100"/>
+                            <DataGridTextColumn Header="Врач"
+                    Binding="{Binding Doctor.DoctorName}" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="TabConsultation" Header="Прием"  Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background >
+                        <LinearGradientBrush >
+                            <GradientStop Color="Lavender" Offset="1" />
+                            <GradientStop Color="White" Offset="0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <StackPanel>
+                        <TextBlock>Выберите период:</TextBlock>
+                        <TextBlock >С:</TextBlock>
+                        <DatePicker Name="DatePickerFromVisit" Text="{Binding Path=SelectedDate, StringFormat='dd-MM-yyyy'}" ></DatePicker>
+                        <TextBlock>По:</TextBlock>
+                        <DatePicker Name="DatePickerToVisit" Text="{Binding Path=SelectedDate, StringFormat='dd-MM-yyyy'}" ></DatePicker>
+                        <TextBlock Text="Период:" TextAlignment="Center" Width="72"></TextBlock>
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBlock >C</TextBlock>
+                            <TextBlock Text="{Binding ElementName=DatePickerFromVisit,Path=SelectedDate,StringFormat='dd-MM-yyyy'}" Margin="20,0,0,0" Width="70"></TextBlock>
+                            <TextBlock Margin="20,0,0,0">по</TextBlock>
+                            <TextBlock Margin="20,0,0,0" Text="{Binding ElementName=DatePickerToVisit,Path=SelectedDate,StringFormat='dd-MM-yyyy'}"  Width="70"></TextBlock>
+                        </WrapPanel>
+                        <Button Margin="5,10,5,5" x:Name="btAddPeriodVisit"   Click="AddPeriodVisit_Click"   Style="{StaticResource AliceBlueButtonStyle}" Height="28"
+                                >Установить</Button>
+                        <Button Content="Сбросить все фильтры"  Margin="5,10,5,5"  x:Name="btResetFilterVisit"   Click="ResetFilterVisit_Click" Style="{StaticResource AliceBlueButtonStyle}" Height="28"></Button>
+                        <Button Content="Сохранить счет"  Margin="5,50,5,5"  x:Name="btSaveVisit"   Click="btSaveVisit_Click" Style="{StaticResource AliceBlueButtonStyle}"></Button>
+                    </StackPanel>
+                    <ToolBarTray  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  Height="40" VerticalAlignment="Top">
+                        <ToolBar  VerticalAlignment="Top" x:Name="ToolBarConsultation">
+                            <ToggleButton Name="btAddVisit" Click="btnAddVisit_Click" ToolTip="Добавление приема">
+                                <Image Source="/icons/add.png" />
+                            </ToggleButton>
+                            <Separator />
+                            <Button Name="btEdiVisit" Click="btnEditVisit_Click"  ToolTip="Изменение приема">
+                                <Image Source="/icons/edit.png" />
+                            </Button >
+                            <Separator />
+                            <Button Name="btDeleteVisit" Click="btnDeleteVisit_Click"  ToolTip="Удаление приема">
+                                <Image Source="/icons/delete.png" />
+                            </Button>
+                            <Separator />
+                            <TextBox Name="tbSearchVisitField" Foreground="LightGray" Width="150">Поиск...</TextBox>
+                            <Separator />
+                            <Button Name="btSearchVisit" Click="btnSearchVisit_Click"  ToolTip="Поиск по имени пациента">
+                                <Image Source="/icons/ok.png" />
+                            </Button>
+
+                        </ToolBar>
+                    </ToolBarTray>
+                    <DataGrid Grid.Row="0" Grid.Column="1" Margin="0,40,0,0" Grid.RowSpan="2" x:Name="dGridVisit"
+ ItemsSource="{Binding }"
+ AutoGenerateColumns="False"
+ LoadingRow="dGrid_LoadingRow"
+ RowHeaderWidth="40" IsReadOnly="True"  CanUserAddRows="False">
+
+                        <DataGrid.Columns >
+                            <DataGridTextColumn  Header="Дата" Width="70"
+                    Binding="{Binding VisitDate,StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                            <DataGridTextColumn Header="Номер" Width="50"
+                    Binding="{Binding VisitId}"/>
+                            <DataGridTextColumn Header="Пациент" Width="100"
+                    Binding="{Binding Patient.Name}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Header="Врач" Width="100"
+                    Binding="{Binding Doctor.DoctorName}"/>
+                            <DataGridTextColumn Header="Диагноз" Width="100"
+                    Binding="{Binding Diagnose}"/>
+                            <DataGridTextColumn Header="Стоимость Услуг" Width="100"
+                    Binding="{Binding VisitCost}"/>
+                            <DataGridTextColumn Header="Стоимость материалов" Width="140"
+                    Binding="{Binding MaterialCost}"/>
+                            <DataGridTextColumn Header="Общая стоимость" Width="110"
+                    Binding="{Binding TotalCost}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TabPricelist" Header="Прайс-лист"  Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.18*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background >
+                        <LinearGradientBrush >
+                            <GradientStop Color="Lavender" Offset="1" />
+                            <GradientStop Color="White" Offset="0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <StackPanel Grid.RowSpan="2">
+                        <Button x:Name="btAddLinePrice" Click="btnAddLinePrice_Click"  Margin="5,40,5,5" Style="{StaticResource AliceBlueButtonStyle}" Height="28">Добавить запись</Button>
+                        <!--<Button x:Name="btnChangeLinePrice" Click="btnChangeLinePrice_Click"  Margin="5" Style="{StaticResource AliceBlueButtonStyle}" Height="31">Изменить запись</Button>-->
+                        <Button x:Name="btnDeleteLinePrice" Click="btnDeleteLinePrice_Click" Margin="5" Style="{StaticResource AliceBlueButtonStyle}" Height="26">Удалить запись</Button>
+                        <!--<Button Click="btnPrintPrice_Click" Margin="0,40,0,5" Style="{StaticResource AliceBlueButtonStyle}">Печать прайс</Button>-->
+                        <Button x:Name="btnSavePrice"  Click="btnSavePrice_Click" Margin="5,50,5,5" Style="{StaticResource AliceBlueButtonStyle}">Сохранить прайс</Button>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="77.8,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="352" Text="Прейскурант по состоянию на " FontSize="24"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="461.8,10,0,0" TextWrapping="Wrap" Text="{Binding Source={x:Static sys:DateTime.Today},   
+                     StringFormat='dd.MM.yyyy' }" VerticalAlignment="Top" Height="30" Width="302" FontSize="24"/>
+
+                    <DataGrid Grid.Row="1"  x:Name="dGridPrice"
+ ItemsSource="{Binding }"
+ AutoGenerateColumns="False"
+ LoadingRow="dGrid_LoadingRow"
+ RowHeaderWidth="40" IsReadOnly="True"  CanUserAddRows="False" Grid.Column="1">
+
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header="Код" Width="60"
+                    Binding="{Binding PriceList.ServiceCode}"/>
+                            <DataGridTextColumn  Header="Наименование платной медицинской услуги" Width="280"
+                    Binding="{Binding PriceList.ServiceName}"  >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                        <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Header="Цена услуги" Width="100"
+                    Binding="{Binding PriceList.Price}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Материал" Width="100"
+                    Binding="{Binding MaterialName}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                        <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Стоимость мат." Width="100"
+                    Binding="{Binding MaterialCost}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Общая стоимость" Width="110"
+                    Binding="{Binding TotalCost}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TabMaterialReceipts" Header="Приход материалов"  Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                        <RowDefinition Height="81*"/>
+                        <RowDefinition Height="89*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background >
+                        <LinearGradientBrush >
+                            <GradientStop Color="Lavender" Offset="1" />
+                            <GradientStop Color="White" Offset="0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <StackPanel Margin="0,0,0,0.2">
+                        <TextBlock>Выберите период:</TextBlock>
+                        <TextBlock >С:</TextBlock>
+                        <DatePicker Name="DatePickerFromMaterial" Text="{Binding Path=SelectedDate, StringFormat='dd-MM-yyyy'}"></DatePicker>
+                        <TextBlock>По:</TextBlock>
+                        <DatePicker Name="DatePickerToMaterial" Text="{Binding Path=SelectedDate, StringFormat='dd-MM-yyyy'}" ></DatePicker>
+                        <TextBlock Text="Период:" TextAlignment="Center" Width="72"></TextBlock>
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBlock Margin="20,0,0,0">C</TextBlock>
+                            <TextBlock Text="{Binding ElementName=DatePickerFromMaterial,Path=SelectedDate,StringFormat='dd-MM-yyyy'}" Margin="20,0,0,0" Width="70"></TextBlock>
+                            <TextBlock Margin="20,0,0,0">по</TextBlock>
+                            <TextBlock Margin="20,0,0,0" Text="{Binding ElementName=DatePickerToMaterial,Path=SelectedDate,StringFormat='dd-MM-yyyy'}"  Width="70"></TextBlock>
+                        </WrapPanel>
+                        <Button Margin="5" x:Name="btAddPeriodMaterial"   Click="AddPeriodMaterialClick"   Style="{StaticResource AliceBlueButtonStyle}">Установить</Button>
+                        <Button Content="Сбросить все фильтры"  Margin="5"  x:Name="btResetFilterMaterial"   Click="ResetFilterMaterial_Click" Style="{StaticResource AliceBlueButtonStyle}"></Button>
+                    </StackPanel>
+                    <ToolBarTray  Grid.Row="0" Grid.Column="1"  Height="40" VerticalAlignment="Top" Margin="0,0,-0.2,0">
+                        <ToolBar  VerticalAlignment="Top">
+                            <ToggleButton Name="btAddMaterial" Click="btnAddMaterial_Click"  ToolTip="Добавление прихода материалов">
+                                <Image Source="/icons/add.png" />
+                            </ToggleButton>
+                            <Separator />
+                            <Button Name="btEditMaterial" Click="btnEditMaterial_Click" ToolTip="Изменение прихода материалов">
+                                <Image Source="/icons/edit.png" />
+                            </Button >
+                            <Separator />
+                            <Button Name="btDeleteMaterial" Click="btnDeleteMaterial_Click" ToolTip="Удаление прихода материалов">
+                                <Image Source="/icons/delete.png" />
+                            </Button>
+                            <Separator />
+                            <TextBox Name="tbSearchMaterialField" Foreground="LightGray" Width="150">Поиск...</TextBox>
+                            <Separator />
+                            <Button Name="btSearchMaterial" Click="btnSearchMaterial_Click" ToolTip="Поиск по имени ответственного лица">
+                                <Image Source="/icons/ok.png" />
+                            </Button>
+
+                        </ToolBar>
+                    </ToolBarTray>
+                    <DataGrid Grid.Row="0" Grid.Column="1" Margin="0,40,0,0" Grid.RowSpan="3" x:Name="dGridMaterial"
+ ItemsSource="{Binding }"
+ AutoGenerateColumns="False"
+ LoadingRow="dGrid_LoadingRow"
+ RowHeaderWidth="40" IsReadOnly="True"  CanUserAddRows="False" >
+
+                        <DataGrid.Columns >
+                            <DataGridTextColumn  Header="Дата" Width="70"
+                    Binding="{Binding Date,StringFormat='{}{0:dd/MM/yyyy}'}"/>
+
+                            <DataGridTextColumn Header="Стоимость материалов" Width="140"
+                    Binding="{Binding TotalCost}"/>
+                            <DataGridTextColumn Header="Ответственное лицо" Width="160"
+                                                Binding="{Binding Author}"/>
+                            <DataGridTextColumn Header="Вид поступления" Width="160"
+                                                Binding="{Binding TypeMaterialReceipt }"/>
+                            <DataGridTextColumn Header="Склад" Width="140"
+                                                Binding="{Binding  Storehouse}"/>
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TabReports" Header="Отчеты"  Style="{StaticResource HeightColor}" >
+                <!--<Grid>
+                    <Grid.Background >
+                        <LinearGradientBrush >
+                            <GradientStop Color="Lavender" Offset="1" />
+                            <GradientStop Color="White" Offset="0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>-->
+                <TabControl TabStripPlacement="Top" >
+
+                    <TabItem Header="По финансовой деятельности" Style="{StaticResource HeightColor}">
+                        <Grid x:Name="dGridReport" Margin="0,10,0.4,-10.2">
+                            <Grid.Background >
+                                <LinearGradientBrush >
+                                    <GradientStop Color="Lavender" Offset="1" />
+                                    <GradientStop Color="White" Offset="0" />
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="1.5*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Margin="20">
+                                <TextBlock>Выберите период:</TextBlock>
+                                <TextBlock >С:</TextBlock>
+                                <DatePicker Name="DatePickerFromReport" Text="{Binding Path=SelectedDate, StringFormat='dd-MM-yyyy'}"></DatePicker>
+                                <TextBlock>По:</TextBlock>
+                                <DatePicker Name="DatePickerToReport" Text="{Binding Path=SelectedDate, StringFormat='dd-MM-yyyy'}" ></DatePicker>
+                                <TextBlock Text="Период:" TextAlignment="Center" Width="72"></TextBlock>
+                                <WrapPanel Orientation="Horizontal">
+                                    <TextBlock Margin="20,0,0,0">C</TextBlock>
+                                    <TextBlock Text="{Binding ElementName=DatePickerFromReport,Path=SelectedDate,StringFormat='dd-MM-yyyy'}" Margin="20,0,0,0" Width="70"></TextBlock>
+                                    <TextBlock Margin="20,0,0,0">по</TextBlock>
+                                    <TextBlock Margin="20,0,0,0" Text="{Binding ElementName=DatePickerToReport,Path=SelectedDate,StringFormat='dd-MM-yyyy'}"  Width="70"></TextBlock>
+                                </WrapPanel>
+                                <Button Margin="19,5,10.2,5" x:Name="btAddPeriodReport"   Click="AddPeriodReport_Click"   Style="{StaticResource AliceBlueButtonStyle}" Height="29" Width="Auto">Установить</Button>
+                            </StackPanel >
+                            <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="20,0,20,0" Grid.RowSpan="2">
+                                <TextBlock Margin="10" FontWeight="Bold"> Выручка за период:</TextBlock>
+                                <TextBlock Name="tbIncome" Margin="20,0,0,0" > руб</TextBlock>
+                                <TextBlock Margin="10" FontWeight="Bold"> Израсходовано материалов:</TextBlock>
+                                <TextBlock Name="tbExpenses" Margin="20,0,0,0"> руб</TextBlock>
+                                <TextBlock Margin="10" FontWeight="Bold"> Рентабельность:</TextBlock>
+                                <TextBlock Name="tbMargin" Margin="20,0,0,0"> %</TextBlock>
+                                <TextBlock Margin="10" FontWeight="Bold"> Всего приемов:</TextBlock>
+                                <TextBlock Name="tbTotalConsultations" Margin="20,0,0,0"></TextBlock>
+                                <TextBlock  Margin="10" FontWeight="Bold">Оборот в расчете на 1 приема:</TextBlock>
+                                <TextBlock Name="tbIncomePerConsultation" Margin="20,0,0,0"> руб</TextBlock>
+                            </StackPanel>
+                            <Grid x:Name="GridPieChart" Grid.Column="2" Grid.Row="0" Margin="5" >
+
+                                <DVC:Chart Canvas.Top="80" Canvas.Left="10" Name="mcChart"
+           Width="350" Height="200"
+           Background="AliceBlue" Title="Диаграмма выручки по врачам">
+                                    <DVC:Chart.Series>
+                                        <DVC:PieSeries Title=""
+            IndependentValueBinding="{Binding Path=Doctor.DoctorName}"
+            DependentValueBinding="{Binding Path=Income}">
+                                        </DVC:PieSeries>
+                                    </DVC:Chart.Series>
+                                </DVC:Chart>
+                            </Grid>
+                            <Grid x:Name="GridBarChart" Grid.Column="2" Grid.Row="1" Margin="5" >
+
+                                <DVC:Chart Canvas.Top="80" Canvas.Left="10" Name="mbChart"
+           Width="350" Height="200"
+           Background="AliceBlue" Title="Диаграмма рентабельности по врачам, %">
+                                    <DVC:Chart.Series>
+                                        <DVC:BarSeries Title=""
+            IndependentValueBinding="{Binding Path=Doctor.DoctorName}"
+            DependentValueBinding="{Binding Path=ProfitMargin}">
+                                        </DVC:BarSeries>
+                                    </DVC:Chart.Series>
+                                </DVC:Chart>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <!--<TabItem Header="Остатки материалов на складе" Style="{StaticResource HeightColor}">
+                        <Grid x:Name="dGridMaterialReport" >
+                            <Grid.Background >
+                                <LinearGradientBrush >
+                                    <GradientStop Color="Lavender" Offset="1" />
+                                    <GradientStop Color="White" Offset="0" />
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="1.5*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Движение материалов" Style="{StaticResource HeightColor}">
+                        <Grid x:Name="dGridMaterialConsumption" >
+                            <Grid.Background >
+                                <LinearGradientBrush >
+                                    <GradientStop Color="Lavender" Offset="1" />
+                                    <GradientStop Color="White" Offset="0" />
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="1.5*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Отчет по услугам" Style="{StaticResource HeightColor}">
+                        <Grid x:Name="dGridServiceRepot" >
+                            <Grid.Background >
+                                <LinearGradientBrush >
+                                    <GradientStop Color="Lavender" Offset="1" />
+                                    <GradientStop Color="White" Offset="0" />
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="1.5*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                        </Grid>
+                    </TabItem>-->
+                </TabControl>
+
+
+
+                <!--</Grid>-->
+            </TabItem>
+            <TabItem Header="О программе"  Style="{StaticResource HeightColor}" Margin="0,250,0,-250" >
+                <Grid >
+                    <Grid.Background >
+                        <LinearGradientBrush >
+                            <GradientStop Color="Lavender" Offset="1" />
+                            <GradientStop Color="White" Offset="0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions></Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions> 
+                    <Image Width = "200" Source="/icons/tooth.png" ></Image>
+
+                    <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                        <TextBlock Text="Разработчик: " FontSize="20"></TextBlock>
+                        <TextBlock Text="Надежда Тронь"  FontSize="20"></TextBlock>
+                        <TextBlock Text="e-mail: nadzeya.tron@gmail.com"  FontSize="20"></TextBlock>
+                        <TextBlock Text="тел: +375(29)554-53-83"  FontSize="20"></TextBlock>
+                        <TextBlock Text="ver 1.00"  FontSize="20"></TextBlock>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
